@@ -11,7 +11,7 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #fcfcfc; color: #333; line-height: 1.6; }
         .container-pequeno { max-width: 950px; margin: 0 auto; padding: 0 20px; }
 
-        /* CABEÇALHO (Otimizado para leitura) */
+        /* CABEÇALHO */
         .site-header-novo { padding: 60px 20px 40px 20px; background: linear-gradient(135deg, #1e3f20 0%, #152c16 100%); color: white; text-align: center; }
         .site-header-novo h1 { font-size: 2.2rem; font-weight: bold; margin-bottom: 25px; letter-spacing: -0.5px; line-height: 1.2; }
         .intro-ahsa { background: rgba(255, 255, 255, 0.08); padding: 25px; border-radius: 12px; border-left: 4px solid #81c784; text-align: left; }
@@ -22,7 +22,6 @@
         .iniciativas-section h2, .associados-section h2 { color: #1e3f20; font-size: 1.8rem; margin-bottom: 12px; font-weight: bold; }
         .iniciativas-intro { color: #555; font-size: 1.1rem; margin-bottom: 35px; }
         
-        /* Grid que se transforma em coluna no telemóvel */
         .grid-iniciativas { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
         .bloco-iniciativa { flex: 1; min-width: 280px; max-width: 440px; background: #f9f9f9; padding: 25px; border-radius: 16px; text-align: left; border: 1px solid #eee; }
         .icone-iniciativa { font-size: 2.5rem; margin-bottom: 10px; }
@@ -33,7 +32,7 @@
         .ambiental { border-top: 5px solid #81c784; }
         .social { border-top: 5px solid #64b5f6; }
 
-        /* SECÇÃO DOS ASSOCIADOS (OS CARTÕES) */
+        /* SECÇÃO DOS ASSOCIADOS */
         .associados-section { padding: 50px 20px; background-color: #f9f9f9; text-align: center; border-top: 1px solid #eee; }
         .grid-associados { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
         .card-associado { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 25px; width: 100%; max-width: 340px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
@@ -43,7 +42,7 @@
         .btn-saber-mais { background: #1e3f20; color: white; border: none; padding: 14px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; text-align: center; font-size: 1rem; transition: background 0.2s; }
         .btn-saber-mais:hover { background: #2d5e30; }
 
-        /* MODAL POPUP REFORÇADO PARA TELEMÓVEL */
+        /* MODAIS */
         .modal-empresa { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); overflow-y: auto; padding: 15px; }
         .modal-content { background-color: white; margin: 10% auto; padding: 25px; border-radius: 16px; max-width: 600px; width: 100%; position: relative; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .close-modal { position: absolute; right: 20px; top: 15px; color: #a0aec0; font-size: 32px; font-weight: bold; cursor: pointer; padding: 5px; }
@@ -54,7 +53,6 @@
         .info-block h4 { margin-top: 0; color: #1e3f20; margin-bottom: 8px; font-size: 1.1rem; font-weight: bold; }
         .info-block p { margin: 0; color: #4a5568; font-size: 1.05rem; line-height: 1.55; }
 
-        /* REGRAS DE ADAPTAÇÃO PARA ECRÃS MAIORES (TABLET/PC) */
         @media (min-width: 600px) {
             .site-header-novo h1 { font-size: 2.6rem; }
             .info-row { flex-direction: row; }
@@ -68,7 +66,7 @@
         <div class="container-pequeno">
             <h1>Raízes do Sudoeste: Agricultura, Água e Comunidade</h1>
             <div class="intro-ahsa">
-                <p>Fundada em 2004, a <strong>AHSA</strong> reúne cerca of 40 empresas agrícolas que operam no Perímetro de Rega do Mira, nos concelhos de Odemira e Aljezur. A nossa missão é representar um setor hortícola inovador e resiliente, focado no desenvolvimento equilibrado do território.</p>
+                <p>Fundada em 2004, a <strong>AHSA</strong> reúne cerca de 40 empresas agrícolas que operam no Perímetro de Rega do Mira, nos concelhos de Odemira e Aljezur. A nossa missão é representar um setor hortícola inovador e resiliente, focado no desenvolvimento equilibrado do território.</p>
                 <p style="margin-top: 12px;">Acreditamos numa agricultura moderna e eficiente que responde com responsabilidade aos desafios atuais: gerir o recurso limitado da água com precisão máxima, garantir condições de trabalho dignas e inclusivas, e assegurar que o Litoral Alentejano e a Costa Vicentina continuam a ser um motor económico exemplar, sustentável e profundamente ligado à sua comunidade.</p>
             </div>
         </div>
@@ -128,6 +126,7 @@
         </div>
     </section>
 
+    <!-- MODAIS DE DETALHE -->
     <div id="modal-finca" class="modal-empresa">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal-finca')">&times;</span>
@@ -178,20 +177,22 @@
         </div>
     </div>
 
+    <!-- JAVASCRIPT E NOVO MÉTODO DE CARREGAMENTO DO CHAT -->
     <script>
         function openModal(modalId) { document.getElementById(modalId).style.display = "block"; }
         function closeModal(modalId) { document.getElementById(modalId).style.display = "none"; }
         window.onclick = function(event) { if (event.target.className === 'modal-empresa') { event.target.style.display = "none"; } }
 
-        // SCRIPT DO CHAT TAWK.TO COM A CHAVE ATUALIZADA DA MARTA
+        // Chamada Direta e Otimizada para o Chat da Marta
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/6a312794ae39691d46edcd14/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            // Forçamos o link com o ID exato fornecido por ti
+            s1.src='https://embed.tawk.to/6a312794ae39691d46edcd14/1hukomccg'; 
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
         })();
     </script>
 
