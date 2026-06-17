@@ -177,19 +177,18 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT E NOVO MÉTODO DE CARREGAMENTO DO CHAT -->
-    <script>
+    <!-- SCRIPT CORRIGIDO COM BASE NO LINK DIRETO DA MARTA -->
+    <script type="text/javascript">
         function openModal(modalId) { document.getElementById(modalId).style.display = "block"; }
         function closeModal(modalId) { document.getElementById(modalId).style.display = "none"; }
         window.onclick = function(event) { if (event.target.className === 'modal-empresa') { event.target.style.display = "none"; } }
 
-        // Chamada Direta e Otimizada para o Chat da Marta
+        // Nova chamada usando o formato limpo com o ID validado por ti
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
             s1.async=true;
-            // Forçamos o link com o ID exato fornecido por ti
-            s1.src='https://embed.tawk.to/6a312794ae39691d46edcd14/1hukomccg'; 
+            s1.src='https://embed.tawk.to/6a312794ae39691d46edcd14'; 
             s1.charset='UTF-8';
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
