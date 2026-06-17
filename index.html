@@ -19,7 +19,7 @@
 
         /* SECÇÃO DE INICIATIVAS */
         .iniciativas-section { padding: 50px 20px; background-color: #ffffff; text-align: center; }
-        .iniciativas-section h2, .associados-section h2 { color: #1e3f20; font-size: 1.8rem; margin-bottom: 12px; font-weight: bold; }
+        .iniciativas-section h2, .associados-section h2, .chat-section h2 { color: #1e3f20; font-size: 1.8rem; margin-bottom: 12px; font-weight: bold; }
         .iniciativas-intro { color: #555; font-size: 1.1rem; margin-bottom: 35px; }
         
         .grid-iniciativas { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
@@ -41,6 +41,11 @@
         .card-frase { color: #4a5568; font-style: italic; font-size: 1.05rem; line-height: 1.5; margin-bottom: 25px; }
         .btn-saber-mais { background: #1e3f20; color: white; border: none; padding: 14px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; text-align: center; font-size: 1rem; transition: background 0.2s; }
         .btn-saber-mais:hover { background: #2d5e30; }
+
+        /* SECÇÃO DO CHAT INTEGRADO */
+        .chat-section { padding: 50px 20px; background-color: #ffffff; text-align: center; border-top: 1px solid #eee; }
+        .chat-container { width: 100%; max-width: 600px; height: 500px; margin: 20px auto 0 auto; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .chat-container iframe { width: 100%; height: 100%; border: none; }
 
         /* MODAIS */
         .modal-empresa { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); overflow-y: auto; padding: 15px; }
@@ -66,7 +71,7 @@
         <div class="container-pequeno">
             <h1>Raízes do Sudoeste: Agricultura, Água e Comunidade</h1>
             <div class="intro-ahsa">
-                <p>Fundada em 2004, a <strong>AHSA</strong> reúne cerca de 40 empresas agrícolas que operam no Perímetro de Rega do Mira, nos concelhos de Odemira e Aljezur. A nossa missão é representar um setor hortícola inovador e resiliente, focado no desenvolvimento equilibrado do território.</p>
+                <p>Fundada em 2004, a <strong>AHSA</strong> reúne cerca de 40 empresas agrícolas que operam no Perímetro de Rega do Mira, nos concelhos of Odemira e Aljezur. A nossa missão é representar um setor hortícola inovador e resiliente, focado no desenvolvimento equilibrado do território.</p>
                 <p style="margin-top: 12px;">Acreditamos numa agricultura moderna e eficiente que responde com responsabilidade aos desafios atuais: gerir o recurso limitado da água com precisão máxima, garantir condições de trabalho dignas e inclusivas, e assegurar que o Litoral Alentejano e a Costa Vicentina continuam a ser um motor económico exemplar, sustentável e profundamente ligado à sua comunidade.</p>
             </div>
         </div>
@@ -126,6 +131,18 @@
         </div>
     </section>
 
+    <!-- NOVA SECÇÃO: CHAT DA VICENTINA INCORPORADO DIRETAMENTE -->
+    <section class="chat-section">
+        <div class="container-pequeno">
+            <h2>Fale com a Vicentina</h2>
+            <p class="iniciativas-intro">Tem dúvidas sobre a atividade agrícola ou sustentabilidade na nossa região? Pergunte aqui diretamente.</p>
+            <div class="chat-container">
+                <!-- Usamos o teu link de chat verificado diretamente como um elemento seguro da página -->
+                <iframe src="https://tawk.to/chat/6a312794ae39691d46edcd14/" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- MODAIS DE DETALHE -->
     <div id="modal-finca" class="modal-empresa">
         <div class="modal-content">
@@ -146,7 +163,7 @@
             <div class="info-row" style="margin-top: 15px;">
                 <div class="info-block" style="width: 100%;">
                     <h4>🌍 Sustentabilidade</h4>
-                    <p>Foco em certificações internacionais que validam as boas práticas de conservação do solo e respeito pelo ecossistema envolvente.</p>
+                    <p>Foco em certificações internacionais que validam as boas práticas de conservação do solo e respeito pelo ecossistema envolvnete.</p>
                 </div>
             </div>
         </div>
@@ -177,22 +194,10 @@
         </div>
     </div>
 
-    <!-- SCRIPT CORRIGIDO COM BASE NO LINK DIRETO DA MARTA -->
-    <script type="text/javascript">
+    <script>
         function openModal(modalId) { document.getElementById(modalId).style.display = "block"; }
         function closeModal(modalId) { document.getElementById(modalId).style.display = "none"; }
         window.onclick = function(event) { if (event.target.className === 'modal-empresa') { event.target.style.display = "none"; } }
-
-        // Nova chamada usando o formato limpo com o ID validado por ti
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/6a312794ae39691d46edcd14'; 
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
     </script>
 
 </body>
