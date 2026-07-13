@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sabores com Raízes — um livro onde o abacate se encontra com os produtos e sabores do Sudoeste Alentejano.">
+    <title>Raízes do Sudoeste - Sabores com Raízes</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --verde-escuro: #152c16;
+            --verde: #1e3f20;
+            --verde-claro: #81c784;
+            --creme: #f5f1e7;
+            --texto: #333;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        .container-pequeno { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        .mini-menu {
+            background: var(--verde-escuro);
+            padding: 15px 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+        .mini-menu a {
+            color: #e8f5e9;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .mini-menu a:hover, .mini-menu a.ativo { color: var(--verde-claro); }
+
+        .ebook-section {
+            padding: 42px 0 60px;
+            text-align: center;
+            min-height: calc(100vh - 55px);
+        }
+        .ebook-section h1 {
+            color: var(--verde);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .ebook-intro {
+            max-width: 760px;
+            margin: 0 auto 30px;
+            color: #555;
+            font-size: clamp(1rem, 2.4vw, 1.15rem);
+        }
+
+
+        .download-container {
+            margin: 0 auto 28px;
+            text-align: center;
+        }
+        .botao-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            background: var(--verde);
+            color: white;
+            text-decoration: none;
+            padding: 13px 24px;
+            border-radius: 999px;
+            font-weight: 750;
+            font-size: 1rem;
+            box-shadow: 0 8px 22px rgba(21,44,22,0.18);
+            transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+        }
+        .botao-download:hover {
+            background: #28552b;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 26px rgba(21,44,22,0.22);
+        }
+        .botao-download:focus-visible {
+            outline: 3px solid var(--verde-claro);
+            outline-offset: 3px;
+        }
+
+        .leitor {
+            max-width: 760px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.78);
+            border: 1px solid rgba(21,44,22,0.12);
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: 0 18px 50px rgba(21,44,22,0.12);
+        }
+        .pagina-moldura {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 320px;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #dfded8;
+            user-select: none;
+            touch-action: pan-y;
+        }
+        #paginaLivro {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            max-height: 72vh;
+            object-fit: contain;
+            background: white;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+            transition: opacity .18s ease, transform .18s ease;
+        }
+        #paginaLivro.a-mudar { opacity: .3; transform: scale(.985); }
+        .estado-carregamento {
+            position: absolute;
+            inset: 0;
+            display: none;
+            place-items: center;
+            background: rgba(255,255,255,.65);
+            color: var(--verde);
+            font-weight: 700;
+        }
+        .estado-carregamento.visivel { display: grid; }
+
+        .controlos {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 12px;
+            align-items: center;
+            margin-top: 16px;
+        }
+        .grupo-botoes { display: flex; gap: 10px; }
+        .grupo-botoes:last-child { justify-content: flex-end; }
+        .botao {
+            border: 0;
+            border-radius: 999px;
+            padding: 11px 16px;
+            background: var(--verde);
+            color: white;
+            font-weight: 750;
+            cursor: pointer;
+            font-size: .95rem;
+            transition: transform .15s ease, background .15s ease, opacity .15s ease;
+        }
+        .botao:hover { background: #28552b; transform: translateY(-1px); }
+        .botao:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+        .botao-secundario { background: #e5eadf; color: var(--verde-escuro); }
+        .botao-secundario:hover { background: #d5dfce; }
+        .contador { font-weight: 750; color: var(--verde-escuro); white-space: nowrap; }
+        .ajuda {
+            margin-top: 13px;
+            color: #6a6a6a;
+            font-size: .9rem;
+        }
+
+        .pagina-moldura:fullscreen {
+            background: #1a1a1a;
+            padding: 18px;
+        }
+        .pagina-moldura:fullscreen #paginaLivro {
+            max-height: calc(100vh - 36px);
+            max-width: calc(100vw - 36px);
+        }
+
+        @media (max-width: 650px) {
+            .mini-menu { overflow-x: auto; text-align: left; }
+            .mini-menu a { margin: 0 9px; }
+            .ebook-section { padding-top: 30px; }
+            .leitor { padding: 10px; border-radius: 16px; }
+            #paginaLivro { max-height: 68vh; }
+            .controlos { grid-template-columns: 1fr 1fr; }
+            .contador { grid-column: 1 / -1; grid-row: 1; }
+            .grupo-botoes { grid-row: 2; }
+            .grupo-botoes:last-child { justify-content: flex-end; }
+            .botao { padding: 11px 14px; }
+            .ajuda { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="mini-menu" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="associados.html">As Nossas Empresas</a>
+        <a href="iniciativas.html" class="ativo" aria-current="page">Sabores com Raízes</a>
+    </nav>
+
+    <main class="ebook-section">
+        <div class="container-pequeno">
+            <h1>Sabores com Raízes</h1>
+            <p class="ebook-intro">
+                Um livro onde o abacate se encontra com os produtos, as tradições e os sabores do Sudoeste Alentejano.
+                Folheie, descubra novas combinações e leve estas receitas consigo.
+            </p>
+
+
+            <div class="download-container">
+                <a
+                    href="Sabores_com_Raizes.pdf"
+                    download
+                    class="botao-download"
+                    aria-label="Descarregar o ebook Sabores com Raízes em PDF"
+                >
+                    ⬇ Descarregar o ebook em PDF
+                </a>
+            </div>
+
+            <section class="leitor" aria-label="Leitor do livro Sabores com Raízes">
+                <div class="pagina-moldura" id="molduraLivro">
+                    <img
+                        id="paginaLivro"
+                        src="livro/Pagina1.webp"
+                        alt="Capa do livro Sabores com Raízes"
+                        width="1054"
+                        height="1492"
+                    >
+                    <div class="estado-carregamento" id="estadoCarregamento" aria-live="polite">A carregar página…</div>
+                </div>
+
+                <div class="controlos">
+                    <div class="grupo-botoes">
+                        <button class="botao" id="anterior" type="button" aria-label="Página anterior">← Anterior</button>
+                    </div>
+
+                    <p class="contador" id="contador" aria-live="polite">Página 1 de 26</p>
+
+                    <div class="grupo-botoes">
+                        <button class="botao botao-secundario" id="ecraInteiro" type="button">Ecrã inteiro</button>
+                        <button class="botao" id="seguinte" type="button" aria-label="Página seguinte">Seguinte →</button>
+                    </div>
+                </div>
+
+                <p class="ajuda">Use as setas do teclado, os botões ou deslize a página no telemóvel.</p>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const TOTAL_PAGINAS = 26;
+        let paginaAtual = 1;
+        let inicioToqueX = null;
+
+        const imagem = document.getElementById('paginaLivro');
+        const contador = document.getElementById('contador');
+        const anterior = document.getElementById('anterior');
+        const seguinte = document.getElementById('seguinte');
+        const ecraInteiro = document.getElementById('ecraInteiro');
+        const moldura = document.getElementById('molduraLivro');
+        const carregamento = document.getElementById('estadoCarregamento');
+
+        function caminhoPagina(numero) {
+            return `livro/Pagina${numero}.webp`;
+        }
+
+        function textoAlternativo(numero) {
+            if (numero === 1) return 'Capa do livro Sabores com Raízes';
+            if (numero === TOTAL_PAGINAS) return 'Contracapa do livro Sabores com Raízes';
+            return `Página ${numero} do livro Sabores com Raízes`;
+        }
+
+        function preCarregar(numero) {
+            if (numero < 1 || numero > TOTAL_PAGINAS) return;
+            const img = new Image();
+            img.src = caminhoPagina(numero);
+        }
+
+        function mostrarPagina(numero) {
+            const destino = Math.max(1, Math.min(TOTAL_PAGINAS, numero));
+            if (destino === paginaAtual && imagem.complete) return;
+
+            imagem.classList.add('a-mudar');
+            carregamento.classList.add('visivel');
+
+            const novaImagem = new Image();
+            novaImagem.onload = () => {
+                paginaAtual = destino;
+                imagem.src = novaImagem.src;
+                imagem.alt = textoAlternativo(destino);
+                contador.textContent = `Página ${destino} de ${TOTAL_PAGINAS}`;
+                anterior.disabled = destino === 1;
+                seguinte.disabled = destino === TOTAL_PAGINAS;
+                imagem.classList.remove('a-mudar');
+                carregamento.classList.remove('visivel');
+                preCarregar(destino - 1);
+                preCarregar(destino + 1);
+            };
+            novaImagem.onerror = () => {
+                carregamento.textContent = 'Não foi possível carregar esta página.';
+                imagem.classList.remove('a-mudar');
+            };
+            novaImagem.src = caminhoPagina(destino);
+        }
+
+        anterior.addEventListener('click', () => mostrarPagina(paginaAtual - 1));
+        seguinte.addEventListener('click', () => mostrarPagina(paginaAtual + 1));
+
+        document.addEventListener('keydown', (evento) => {
+            if (evento.key === 'ArrowLeft') mostrarPagina(paginaAtual - 1);
+            if (evento.key === 'ArrowRight') mostrarPagina(paginaAtual + 1);
+        });
+
+        moldura.addEventListener('touchstart', (evento) => {
+            inicioToqueX = evento.changedTouches[0].clientX;
+        }, { passive: true });
+
+        moldura.addEventListener('touchend', (evento) => {
+            if (inicioToqueX === null) return;
+            const fimToqueX = evento.changedTouches[0].clientX;
+            const deslocamento = fimToqueX - inicioToqueX;
+            if (Math.abs(deslocamento) > 50) {
+                if (deslocamento < 0) mostrarPagina(paginaAtual + 1);
+                else mostrarPagina(paginaAtual - 1);
+            }
+            inicioToqueX = null;
+        }, { passive: true });
+
+        ecraInteiro.addEventListener('click', async () => {
+            try {
+                if (!document.fullscreenElement) await moldura.requestFullscreen();
+                else await document.exitFullscreen();
+            } catch (erro) {
+                console.warn('O modo de ecrã inteiro não está disponível neste navegador.', erro);
+            }
+        });
+
+        document.addEventListener('fullscreenchange', () => {
+            ecraInteiro.textContent = document.fullscreenElement ? 'Sair do ecrã inteiro' : 'Ecrã inteiro';
+        });
+
+        anterior.disabled = true;
+        preCarregar(2);
+    </script>
+
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6a312794ae39691d46edcd14/1jrapv7lt';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</body>
+</html>
