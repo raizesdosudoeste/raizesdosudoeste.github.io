@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactos, privacidade e informação legal do projeto Raízes do Sudoeste, uma iniciativa das empresas do Grupo Persea.">
+    <title>Raízes do Sudoeste - Contactos e Privacidade</title>
+
+    <style>
+        :root {
+            --verde-escuro: #22362b;
+            --verde: #295135;
+            --verde-medio: #295135;
+            --verde-claro: #b3d17a;
+            --castanho: #743d2a;
+            --verde-fundo: #eef6ef;
+            --creme: #f7f3e9;
+            --texto: #303530;
+            --texto-suave: #657066;
+            --branco: #ffffff;
+            --sombra: 0 16px 40px rgba(34, 54, 43, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f7f8f5;
+            color: var(--texto);
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1000px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .mini-menu {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--verde-escuro);
+            padding: 14px 8px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mini-menu a {
+            color: #e8f5e9;
+            text-decoration: none;
+            margin: 0 11px;
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+
+        .mini-menu a:hover,
+        .mini-menu a.ativo {
+            color: var(--verde-claro);
+        }
+
+        .hero {
+            color: white;
+            text-align: center;
+            padding: 72px 18px;
+            background:
+                radial-gradient(circle at top right, rgba(179,209,122,.2), transparent 38%),
+                linear-gradient(135deg, var(--verde) 0%, var(--verde-escuro) 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 3.35rem);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            max-width: 690px;
+            margin: 0 auto;
+            color: #e8f5e9;
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+        }
+
+        .conteudo {
+            padding: 58px 0 72px;
+        }
+
+        .contacto-principal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-bottom: 44px;
+        }
+
+        .cartao {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: var(--sombra);
+            border: 1px solid #e7ece5;
+        }
+
+        .cartao h2,
+        .cartao h3 {
+            color: var(--verde);
+            margin-bottom: 12px;
+        }
+
+        .cartao h2 {
+            font-size: 1.55rem;
+        }
+
+        .cartao p + p {
+            margin-top: 10px;
+        }
+
+        .email {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--verde);
+            font-weight: 800;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+        }
+
+        .exploracoes {
+            display: grid;
+            gap: 14px;
+            margin-top: 17px;
+        }
+
+        .exploracao {
+            padding: 15px;
+            background: var(--creme);
+            border-radius: 14px;
+        }
+
+        .exploracao strong {
+            display: block;
+            color: var(--verde);
+            margin-bottom: 2px;
+        }
+
+        .exploracao a {
+            display: inline-block;
+            color: var(--verde-medio);
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 7px;
+        }
+
+        .exploracao a:hover {
+            text-decoration: underline;
+        }
+
+        .legal {
+            display: grid;
+            gap: 22px;
+        }
+
+        .bloco-legal {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #e7ece5;
+        }
+
+        .bloco-legal h2 {
+            color: var(--verde);
+            font-size: 1.45rem;
+            margin-bottom: 14px;
+        }
+
+        .bloco-legal h3 {
+            color: var(--verde);
+            font-size: 1.05rem;
+            margin: 20px 0 6px;
+        }
+
+        .bloco-legal p + p {
+            margin-top: 12px;
+        }
+
+        .bloco-legal ul {
+            padding-left: 22px;
+            margin-top: 10px;
+        }
+
+        .bloco-legal li {
+            margin-bottom: 7px;
+        }
+
+        .aviso {
+            margin-top: 18px;
+            background: var(--verde-fundo);
+            border-left: 5px solid var(--verde-claro);
+            border-radius: 14px;
+            padding: 18px 20px;
+            color: #405b43;
+        }
+
+        .data {
+            margin-top: 16px;
+            color: var(--texto-suave);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: var(--verde-escuro);
+            color: #dcebdd;
+            text-align: center;
+            padding: 28px 16px;
+            font-size: 0.92rem;
+        }
+
+        footer a {
+            color: var(--verde-claro);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 760px) {
+            .mini-menu {
+                display: flex;
+                justify-content: flex-start;
+                gap: 15px;
+                overflow-x: auto;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .mini-menu a {
+                margin: 0;
+                white-space: nowrap;
+                font-size: 0.84rem;
+            }
+
+            .hero {
+                padding: 52px 16px;
+            }
+
+            .contacto-principal {
+                grid-template-columns: 1fr;
+            }
+
+            .cartao,
+            .bloco-legal {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="mini-menu" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="associados.html">As Nossas Explorações</a>
+        <a href="iniciativas.html">Sabores com Raízes</a>
+        <a href="contactos.html" class="ativo">Contactos</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Contactos e Privacidade</h1>
+            <p>
+                Informação de contacto, condições de utilização e tratamento de dados
+                no projeto Raízes do Sudoeste.
+            </p>
+        </div>
+    </header>
+
+    <main class="conteudo">
+        <div class="container">
+            <section class="contacto-principal" aria-label="Contactos">
+                <article class="cartao">
+                    <h2>Fale connosco</h2>
+                    <p>
+                        O <strong>Raízes do Sudoeste</strong> é uma iniciativa criada pelas
+                        empresas do Grupo Persea, com atividade agrícola no Sudoeste Alentejano.
+                    </p>
+                    <p>
+                        Para questões sobre o projeto, o ebook ou as nossas explorações,
+                        contacte-nos por email.
+                    </p>
+                    <a class="email" href="mailto:geral@perseagrowers.com">
+                        ✉ geral@perseagrowers.com
+                    </a>
+                </article>
+
+                <article class="cartao">
+                    <h2>As nossas explorações</h2>
+
+                    <div class="exploracoes">
+                        <div class="exploracao">
+                            <strong>Finca Tropic I, S.A.</strong>
+                            Herdade Á-de-Mateus<br>
+                            Longueira – Almograve
+                            <br>
+                            <a href="https://maps.app.goo.gl/uvY4HPEH9EuQu7gTA"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                Ver no Google Maps
+                            </a>
+                        </div>
+
+                        <div class="exploracao">
+                            <strong>Extraissol, Lda.</strong>
+                            Herdade do Bico Torto<br>
+                            São Teotónio
+                            <br>
+                            <a href="https://maps.app.goo.gl/Y5LUWFSTPX3fveN18"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                Ver no Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="legal" aria-label="Informação legal">
+                <article class="bloco-legal" id="privacidade">
+                    <h2>Política de Privacidade</h2>
+
+                    <p>
+                        O website <strong>Raízes do Sudoeste</strong> é promovido pelas empresas
+                        do Grupo Persea e tem uma finalidade exclusivamente institucional e informativa.
+                    </p>
+
+                    <p>
+                        Este website não possui registo de utilizadores, loja online ou formulário
+                        de contacto. Quando nos envia um email, os dados que decidir fornecer são
+                        utilizados apenas para analisar e responder ao seu pedido.
+                    </p>
+
+                    <h3>Vicentina e serviço de chat</h3>
+
+                    <p>
+                        A Vicentina é um assistente virtual disponibilizado através da plataforma
+                        <strong>Botpress</strong> e encontra-se acessível apenas na página inicial
+                        deste website.
+                    </p>
+
+                    <p>Ao utilizar a Vicentina, podem ser tratados:</p>
+
+                    <ul>
+                        <li>as perguntas, mensagens e restantes dados que fornecer voluntariamente;</li>
+                        <li>dados técnicos necessários ao funcionamento e à segurança da sessão;</li>
+                        <li>informação sobre o navegador e o dispositivo;</li>
+                        <li>identificadores técnicos e histórico da conversa, de acordo com a configuração do serviço.</li>
+                    </ul>
+
+                    <p>
+                        A Botpress e os prestadores tecnológicos necessários ao funcionamento do
+                        serviço podem tratar estes dados nos termos das respetivas políticas e
+                        condições.
+                    </p>
+
+                    <p>
+                        Não partilhe através da Vicentina dados pessoais desnecessários, informação
+                        sensível, confidencial, financeira, médica ou qualquer outro conteúdo que
+                        não seja necessário para colocar a sua pergunta.
+                    </p>
+
+                    <h3>Finalidades</h3>
+
+                    <p>Os dados associados aos canais de contacto e à Vicentina podem ser tratados para:</p>
+
+                    <ul>
+                        <li>responder às perguntas colocadas;</li>
+                        <li>prestar informação sobre o projeto;</li>
+                        <li>assegurar o funcionamento e a segurança dos canais utilizados;</li>
+                        <li>identificar e corrigir problemas técnicos ou respostas inadequadas.</li>
+                    </ul>
+
+                    <h3>Conservação dos dados</h3>
+
+                    <p>
+                        O período de conservação dos dados associados à Vicentina depende das
+                        configurações do serviço e das condições aplicáveis à plataforma Botpress.
+                    </p>
+
+                    <h3>Direitos dos titulares</h3>
+
+                    <p>
+                        Pode solicitar informação sobre os seus dados e, quando aplicável,
+                        exercer os direitos de acesso, retificação, apagamento, limitação,
+                        oposição ou portabilidade através de
+                        <a class="email" href="mailto:geral@perseagrowers.com">
+                            geral@perseagrowers.com
+                        </a>.
+                    </p>
+
+                    <p>
+                        Pode também consultar a
+                        <a href="https://botpress.com/legal/privacy-statement"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Política de Privacidade da Botpress
+                        </a>.
+                    </p>
+                </article>
+
+                <article class="bloco-legal" id="cookies">
+                    <h2>Cookies e armazenamento local</h2>
+
+                    <p>
+                        O website não utiliza diretamente ferramentas próprias de análise,
+                        publicidade comportamental ou criação de perfis.
+                    </p>
+
+                    <p>
+                        A Vicentina pode recorrer a armazenamento local ou armazenamento de sessão
+                        necessário ao funcionamento do chat, à continuidade da conversa, ao
+                        desempenho e à segurança do serviço.
+                    </p>
+
+                    <p>
+                        Dependendo da configuração escolhida, o histórico da conversa pode ser
+                        mantido entre visitas ou reiniciado quando a sessão termina.
+                    </p>
+
+                    <p>
+                        Pode limitar ou apagar estas tecnologias através das definições do seu
+                        navegador. Algumas funcionalidades da Vicentina, incluindo a continuidade
+                        da conversa, poderão deixar de funcionar corretamente.
+                    </p>
+                </article>
+
+                <article class="bloco-legal" id="utilizacao">
+                    <h2>Termos de utilização e aviso sobre a Vicentina</h2>
+
+                    <p>
+                        Os conteúdos deste website destinam-se a divulgar o projeto,
+                        as explorações e informação geral relacionada com a agricultura
+                        no Sudoeste Alentejano.
+                    </p>
+
+                    <div class="aviso">
+                        <strong>Importante:</strong> A Vicentina é um assistente virtual.
+                        As respostas são geradas automaticamente com base na documentação
+                        disponibilizada pelo projeto e podem conter imprecisões ou informação
+                        incompleta. Não substituem aconselhamento técnico, agronómico, jurídico,
+                        médico, ambiental ou de qualquer outra área profissional. Informação
+                        relevante para decisões deve ser confirmada através de fontes oficiais
+                        ou de profissionais qualificados.
+                    </div>
+
+                    <p>
+                        Embora procuremos manter os conteúdos corretos e atualizados, não
+                        garantimos que toda a informação esteja permanentemente completa,
+                        atual ou isenta de erros.
+                    </p>
+
+                    <p>
+                        Os links externos são disponibilizados por conveniência. O Grupo
+                        Persea não controla nem assume responsabilidade pelos conteúdos,
+                        políticas ou disponibilidade de websites de terceiros.
+                    </p>
+                </article>
+
+                <article class="bloco-legal" id="direitos">
+                    <h2>Direitos de autor</h2>
+
+                    <p>
+                        Os textos, fotografias, elementos gráficos e restantes conteúdos
+                        deste website pertencem às empresas do Grupo Persea ou são utilizados
+                        com autorização, salvo indicação em contrário.
+                    </p>
+
+                    <p>
+                        Não é permitida a reprodução, alteração ou utilização comercial dos
+                        conteúdos sem autorização prévia, sem prejuízo das utilizações
+                        permitidas por lei.
+                    </p>
+
+                    <p>
+                        O ebook <strong>Sabores com Raízes</strong> pode ser descarregado para
+                        utilização pessoal. A sua reprodução integral, redistribuição ou
+                        exploração comercial depende de autorização.
+                    </p>
+
+                    <p class="data">Última atualização: julho de 2026.</p>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Grupo Persea ·
+        <a href="mailto:geral@perseagrowers.com">geral@perseagrowers.com</a>
+        · <a href="#privacidade">Privacidade</a>
+        · <a href="#cookies">Cookies</a>
+    </footer>
+</body>
+</html>
