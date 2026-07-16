@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Converse com a Vicentina e descubra mais sobre agricultura, água, sustentabilidade e produção de abacate no Sudoeste Alentejano.">
+    <title>Raízes do Sudoeste - Vicentina</title>
+
+    <style>
+        :root {
+            --verde-escuro: #22362b;
+            --verde: #295135;
+            --verde-medio: #295135;
+            --verde-claro: #b3d17a;
+            --castanho: #743d2a;
+            --verde-fundo: #eef6ef;
+            --creme: #f7f3e9;
+            --texto: #303530;
+            --texto-suave: #657066;
+            --branco: #ffffff;
+            --sombra: 0 16px 40px rgba(34, 54, 43, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f7f8f5;
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1080px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .mini-menu {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 14px 16px;
+            overflow-x: auto;
+            background: var(--verde-escuro);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mini-menu a {
+            color: #e8f5e9;
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+
+        .mini-menu a:hover,
+        .mini-menu a.ativo {
+            color: var(--verde-claro);
+        }
+
+        .hero {
+            padding: 64px 18px 76px;
+            color: white;
+            text-align: center;
+            background:
+                radial-gradient(circle at top right, rgba(179,209,122,.18), transparent 35%),
+                linear-gradient(135deg, var(--verde) 0%, var(--verde-escuro) 100%);
+        }
+
+        .hero h1 {
+            max-width: 850px;
+            margin: 0 auto 22px;
+            font-size: clamp(2rem, 6vw, 3.7rem);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-intro {
+            max-width: 810px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            color: #e8f5e9;
+            text-align: left;
+            font-size: clamp(0.98rem, 2vw, 1.1rem);
+            background: rgba(255,255,255,0.07);
+            border-left: 4px solid var(--verde-claro);
+            border-radius: 14px;
+        }
+
+        .vicentina {
+            position: relative;
+            padding: 64px 18px;
+            text-align: center;
+            background: white;
+        }
+
+        .avatar-wrap {
+            width: 160px;
+            height: 160px;
+            margin: -5px auto 24px;
+            padding: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--verde-claro), var(--verde));
+            box-shadow: 0 18px 42px rgba(34,54,43,.18);
+            animation: flutuar 3s infinite ease-in-out;
+        }
+
+        .avatar-vicentina {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .vicentina h2 {
+            color: var(--verde);
+            font-size: clamp(1.8rem, 5vw, 2.7rem);
+            margin-bottom: 12px;
+        }
+
+        .vicentina-texto {
+            max-width: 720px;
+            margin: 0 auto 25px;
+            color: var(--texto-suave);
+            font-size: clamp(1rem, 2vw, 1.14rem);
+        }
+
+        .temas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 9px;
+            max-width: 780px;
+            margin: 0 auto 28px;
+        }
+
+        .tema {
+            padding: 8px 13px;
+            color: var(--verde);
+            font-size: .9rem;
+            font-weight: 750;
+            border-radius: 999px;
+            background: var(--verde-fundo);
+        }
+
+        .chamada-chat {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 22px;
+            color: white;
+            font-weight: 800;
+            border-radius: 999px;
+            background: var(--verde);
+            box-shadow: 0 10px 25px rgba(41,81,53,.2);
+        }
+
+        .chamada-chat::after {
+            content: "↘";
+            font-size: 1.2rem;
+        }
+
+        .atalhos {
+            padding: 65px 0 75px;
+            background: var(--creme);
+        }
+
+        .atalhos h2 {
+            margin-bottom: 10px;
+            color: var(--verde);
+            text-align: center;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+        }
+
+        .atalhos-intro {
+            max-width: 650px;
+            margin: 0 auto 32px;
+            color: var(--texto-suave);
+            text-align: center;
+        }
+
+        .grelha-atalhos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .cartao {
+            display: flex;
+            min-height: 235px;
+            flex-direction: column;
+            padding: 26px;
+            color: var(--texto);
+            text-decoration: none;
+            border: 1px solid #e5ebe3;
+            border-radius: 20px;
+            background: white;
+            box-shadow: var(--sombra);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .cartao:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(34,54,43,.16);
+        }
+
+        .icone {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cartao h3 {
+            margin-bottom: 9px;
+            color: var(--verde);
+            font-size: 1.3rem;
+        }
+
+        .cartao p {
+            color: var(--texto-suave);
+        }
+
+        .cartao span {
+            margin-top: auto;
+            padding-top: 20px;
+            color: var(--verde-medio);
+            font-weight: 800;
+        }
+
+        footer {
+            padding: 28px 16px;
+            color: #dcebdd;
+            text-align: center;
+            font-size: 0.91rem;
+            background: var(--verde-escuro);
+        }
+
+        footer a {
+            color: var(--verde-claro);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes flutuar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        @media (max-width: 760px) {
+            .mini-menu {
+                justify-content: flex-start;
+                gap: 15px;
+            }
+
+            .mini-menu a {
+                font-size: .84rem;
+            }
+
+            .hero {
+                padding: 48px 16px 58px;
+            }
+
+            .hero-intro {
+                padding: 17px 18px;
+            }
+
+            .vicentina {
+                padding: 48px 16px;
+            }
+
+            .avatar-wrap {
+                width: 130px;
+                height: 130px;
+            }
+
+            .atalhos {
+                padding: 50px 0 60px;
+            }
+
+            .grelha-atalhos {
+                grid-template-columns: 1fr;
+            }
+
+            .cartao {
+                min-height: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="mini-menu" aria-label="Navegação principal">
+        <a href="index.html" class="ativo">Início</a>
+        <a href="associados.html">As Nossas Explorações</a>
+        <a href="iniciativas.html">Sabores com Raízes</a>
+        <a href="contactos.html">Contactos</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Raízes do Sudoeste: Agricultura, Água e Comunidade</h1>
+
+            <div class="hero-intro">
+                <p>
+                    O <strong>Raízes do Sudoeste</strong> é uma iniciativa criada pelas empresas
+                    do <strong>Grupo Persea</strong>, associadas da AHSA e com atividade no
+                    Sudoeste Alentejano. Nesta edição damos a conhecer as nossas explorações,
+                    o trabalho desenvolvido na região e algumas das práticas que fazem parte
+                    de uma agricultura eficiente, responsável e ligada ao território.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="vicentina">
+            <div class="container">
+                <div class="avatar-wrap">
+                    <img
+                        src="avatar_coruja_tawk.jpg"
+                        alt="Vicentina, assistente virtual do Raízes do Sudoeste"
+                        class="avatar-vicentina"
+                    >
+                </div>
+
+                <h2>Olá, eu sou a Vicentina!</h2>
+
+                <p class="vicentina-texto">
+                    Há muitos mitos, dúvidas e curiosidades sobre a agricultura no
+                    Sudoeste Alentejano. Converse comigo e descubra mais sobre o trabalho
+                    desenvolvido pelas empresas do Grupo Persea.
+                </p>
+
+                <div class="temas" aria-label="Exemplos de temas">
+                    <span class="tema">Produção de abacate</span>
+                    <span class="tema">Gestão da água</span>
+                    <span class="tema">Sustentabilidade</span>
+                    <span class="tema">Certificações</span>
+                    <span class="tema">Território</span>
+                    <span class="tema">Agricultura na região</span>
+                </div>
+
+                <div class="chamada-chat">
+                    Clique no balão e faça a sua pergunta
+                </div>
+            </div>
+        </section>
+
+        <section class="atalhos">
+            <div class="container">
+                <h2>Continue a descobrir</h2>
+
+                <p class="atalhos-intro">
+                    Conheça as nossas explorações, folheie o ebook e encontre os contactos
+                    e a informação de privacidade do projeto.
+                </p>
+
+                <div class="grelha-atalhos">
+                    <a class="cartao" href="associados.html">
+                        <div class="icone">🌿</div>
+                        <h3>As Nossas Explorações</h3>
+                        <p>
+                            Conheça a Finca Tropic I e a Extraissol, duas explorações
+                            agrícolas do Grupo Persea no concelho de Odemira.
+                        </p>
+                        <span>Conhecer as explorações →</span>
+                    </a>
+
+                    <a class="cartao" href="iniciativas.html">
+                        <div class="icone">📖</div>
+                        <h3>Sabores com Raízes</h3>
+                        <p>
+                            Folheie o ebook que junta o abacate aos sabores e produtos
+                            do Sudoeste Alentejano.
+                        </p>
+                        <span>Abrir o ebook →</span>
+                    </a>
+
+                    <a class="cartao" href="contactos.html">
+                        <div class="icone">✉️</div>
+                        <h3>Contactos e Privacidade</h3>
+                        <p>
+                            Encontre o nosso email, a localização das explorações e a
+                            informação legal e de privacidade do projeto.
+                        </p>
+                        <span>Ver contactos →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 Grupo Persea ·
+        <a href="contactos.html">Contactos e Privacidade</a>
+    </footer>
+
+    <!-- VICENTINA / BOTPRESS -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/07/16/08/20260716083812-75PQU8TW.js" defer></script>
+</body>
+</html>
